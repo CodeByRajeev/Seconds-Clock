@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Helvetica', sans-serif;
+        }
+
+        #clock-container {
+            text-align: center;
+        }
+
+        #seconds-left-box {
+            position: relative;
+            display: inline-block;
+            border: 3px solid #022149; /* Navy Blue */
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+            background: rgba(52, 152, 219, 0); /* Completely Transparent */
+        }
+
+        #seconds-left {
+            font-size: 2.5em;
+            color: #ffae00; /* Golden color */
+            margin-bottom: 5px;
+        }
+
+        #total-seconds-text {
+            font-size: 1.2em;
+            color: #fff;
+        }
+
+        #clock {
+            font-size: 4em;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+
+        #quote {
+            font-size: 1.2em;
+            font-style: italic;
+            color: #95a5a6;
+            margin-bottom: 10px;
+        }
+
+        #settings-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        #quote-input {
+            padding: 5px;
+            margin-right: 5px;
+            font-size: 1em;
+        }
+
+        #update-quote-btn {
+            padding: 5px;
+            font-size: 1em;
+        }
+    </style>
+    <title>Sexy Digital Clock</title>
+</head>
+<body>
+    <div id="clock-container">
+        <div id="settings-container">
+            <input type="text" id="quote-input" placeholder="Enter your quote">
+            <button id="update-quote-btn">Update Quote</button>
+        </div>
+        <div id="seconds-left-box">
+            <div id="seconds-left"></div>
+        </div>
+        <div id="total-seconds-text">Total seconds left today</div>
+        <div id="clock"></div>
+        <div id="quote">"Time is what we want most, but what we use worst." - William Penn</div>
+    </div>
+
+    <script>
+        const quoteElement = document.getElementById('quote');
+        const quoteInput = document.getElementById('quote-input');
+        const updateQuoteBtn = document.getElementById('update-quote-btn');
+
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+
+            const totalSecondsLeft = (24 * 60 * 60) - (now.getHours() * 60 * 60 + now.getMinutes() * 60 + now.getSeconds());
+
+            const secondsLeftElement = document.getElementById('seconds-left');
+            secondsLeftElement.textContent = totalSecondsLeft;
+
+            const clockElement = document.getElementById('clock');
+            clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+
+            setTimeout(updateClock, 1000); // Update every second
+        }
+
+        updateClock(); // Initial call
+
+        updateQuoteBtn.addEventListener('click', () => {
+            const newQuote = quoteInput.value.trim();
+            if (newQuote !== '') {
+                quoteElement.textContent = newQuote;
+                quoteInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
