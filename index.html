@@ -22,11 +22,13 @@
         #seconds-left-box {
             position: relative;
             display: inline-block;
-            border: 3px solid #022149; /* Navy Blue */
+            border: 3px solid #f7f7f8; /* Navy Blue */
             border-radius: 10px;
-            padding: 10px;
+            padding: 20px;
             margin-bottom: 20px;
-            background: rgba(52, 152, 219, 0); /* Completely Transparent */
+            width:150px;
+            height:50px;
+            background: rgba(8, 8, 8, 0); /* Completely Transparent */
         }
 
         #seconds-left {
@@ -38,6 +40,7 @@
         #total-seconds-text {
             font-size: 1.2em;
             color: #fff;
+            padding:40px;
         }
 
         #clock {
@@ -68,9 +71,12 @@
         #update-quote-btn {
             padding: 5px;
             font-size: 1em;
+            background-color: #ffae00;
+            border-radius: 2px;
+            border-color:rgb(1, 27, 66);
         }
     </style>
-    <title>Sexy Digital Clock</title>
+    <title> Digital Clock</title>
 </head>
 <body>
     <div id="clock-container">
@@ -78,12 +84,17 @@
             <input type="text" id="quote-input" placeholder="Enter your quote">
             <button id="update-quote-btn">Update Quote</button>
         </div>
+        <div id="clock"></div>
+        <div id="total-seconds-text">Total seconds left today</div>
+
         <div id="seconds-left-box">
             <div id="seconds-left"></div>
         </div>
-        <div id="total-seconds-text">Total seconds left today</div>
-        <div id="clock"></div>
-        <div id="quote">"Time is what we want most, but what we use worst." - William Penn</div>
+        
+        <div id="quote">"Every second counts & every passing second is your resource. 
+            So use it wisely & every second is a once in a life-time chance. 
+            So its your choice to use it or to loose it and every second you make useof, adds value to your future. 
+            So every second decides your future.Use it wisely" - <i> The Future You </i></div>
     </div>
 
     <script>
